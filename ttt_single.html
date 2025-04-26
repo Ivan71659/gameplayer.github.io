@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      text-align: center;
+    }	
+    .imperial-script-regular, .link {
+      font-family: "Imperial Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    header {
+      background-color: #cbc8cc;
+      padding: 20px;
+    }
+    .link {
+      text-decoration: none;
+      margin: 0 50px;
+      color: black;
+      padding: 20px;
+      font-size: 50px;
+    }
+    .link:hover {
+      background-color: #555;
+    }
+    button {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+    table {
+      margin-top: 100px;
+      border: 2px solid black;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    td{
+      border: 2px solid black;
+      padding: 0;
+      margin: 0;
+      width: 50px;
+      height: 50px;
+    }
+    .normal {
+      margin-top: 40px;
+      width: auto;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a class =  "link" href = "index.html">Home</a>
+    <a class =  "link" href = "ttt.html">Tic Tac Toe</a>
+    <a class =  "link" href = "rps.html">Rock Paper Scissors</a>
+    <a class =  "link" href = "ng.html">Guess the Number</a>
+  </header>
+
+  <table>
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button1"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button2"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button3"></button> </td>
+    </tr>
+
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button4"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button5"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button6"></button> </td>
+    </tr>
+
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button7"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button8"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button9"></button> </td>
+    </tr>
+  </table>
+
+  <button class = "normal" onclick = "replay()">REPLAY🔄</button>
+  
+  <p id = "outcome"></p>
+
+  <script>
+    var turn = "❌";
+    var game_over = false;
+    
+    function tap (button){
+      if (game_over) {
+        return;
+      }
+      
+      if(button.textContent == ""){
+        button.textContent = turn;
+        checker ();
+
+        if (game_over) {
+          return;
+        }
+
+        turn = "⭕";
+        getcomputer ();
+        checker ();
+        turn = "❌";
+      }
+    }
+
+    function getcomputer () {
+      while (true) {
+        var number = Math.floor (Math.random () * 9) + 1;
+        if (number == 1 && document.getElementById ("button1").textContent == ""){
+          document.getElementById("button1").textContent = "⭕";
+          break;
+        }
+        else if (number == 2 && document.getElementById ("button2").textContent == ""){
+          document.getElementById("button2").textContent = "⭕";
+          break;
+        }
+        else if (number == 3 && document.getElementById ("button3").textContent == ""){
+          document.getElementById("button3").textContent = "⭕";
+          break;
+        }
+        else if (number == 4 && document.getElementById ("button4").textContent == ""){
+          document.getElementById("button4").textContent = "⭕";
+          break;
+        }
+        else if (number == 5 && document.getElementById ("button5").textContent == ""){
+          document.getElementById("button5").textContent = "⭕";
+          break;
+        }
+        else if (number == 6 && document.getElementById ("button6").textContent == ""){
+          document.getElementById("button6").textContent = "⭕";
+          break;
+        }
+        else if (number == 7 && document.getElementById ("button7").textContent == ""){
+          document.getElementById("button7").textContent = "⭕";
+          break;
+        }
+        else if (number == 8 && document.getElementById ("button8").textContent == ""){
+          document.getElementById("button8").textContent = "⭕";
+          break;
+        }
+        else if (number == 9 && document.getElementById ("button9").textContent == ""){
+          document.getElementById("button9").textContent = "⭕";
+          break;
+        }
+      }
+    }
+    
+    function checker (){
+      var b1 = document.getElementById ("button1").textContent;
+      var b2 = document.getElementById ("button2").textContent;
+      var b3 = document.getElementById ("button3").textContent;
+      var b4 = document.getElementById ("button4").textContent;
+      var b5 = document.getElementById ("button5").textContent;
+      var b6 = document.getElementById ("button6").textContent;
+      var b7 = document.getElementById ("button7").textContent;
+      var b8 = document.getElementById ("button8").textContent;
+      var b9 = document.getElementById ("button9").textContent;
+    
+      if(turn == b1 && turn == b2 && turn == b3){
+        game_over = true;
+      }
+      else if(turn == b4 && turn == b5 && turn == b6){
+        game_over = true;
+      }
+      else if(turn == b7 && turn == b8 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b1 && turn == b4 && turn == b7){
+        game_over = true;
+      }
+      else if(turn == b2 && turn == b5 && turn == b8){
+        game_over = true;
+      }
+      else if(turn == b3 && turn == b6 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b1 && turn == b5 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b3 && turn == b5 && turn == b7){
+        game_over = true;
+      }
+
+      if(game_over == true){
+        document.getElementById ("outcome").innerHTML = turn + " won!";
+      }
+    }
+
+    function replay (){
+      turn = "❌";
+      game_over = false;
+      document.getElementById ("outcome").innerHTML = "";
+      document.getElementById ("button1").textContent = "";
+      document.getElementById ("button2").textContent = "";
+      document.getElementById ("button3").textContent = "";
+      document.getElementById ("button4").textContent = "";
+      document.getElementById ("button5").textContent = "";
+      document.getElementById ("button6").textContent = "";
+      document.getElementById ("button7").textContent = "";
+      document.getElementById ("button8").textContent = "";
+      document.getElementById ("button9").textContent = "";
+    }
+  </script>
+
+</body>
+</html>
