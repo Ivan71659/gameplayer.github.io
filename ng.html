@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      text-align: center;
+    }	
+    .imperial-script-regular, .link {
+      font-family: "Imperial Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    header {
+      background-color: #cbc8cc;
+      padding: 20px;
+    }
+    .link {
+      text-decoration: none;
+      margin: 0 50px;
+      color: black;
+      padding: 20px;
+      font-size: 50px;
+    }
+    .link:hover {
+      background-color: #555;
+    }
+    button {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a class =  "link" href = "index.html">Home</a>
+    <a class =  "link" href = "ttt.html">Tic Tac Toe</a>
+    <a class =  "link" href = "rps.html">Rock Paper Scissors</a>
+    <a class =  "link" href = "ng.html">Guess the Number</a>
+  </header>
+
+  <button onclick = "guess (1)">1</button>
+  <button onclick = "guess (2)">2</button>
+  <button onclick = "guess (3)">3</button>
+  <button onclick = "guess (4)">4</button>
+  <button onclick = "guess (5)">5</button>
+  <button onclick = "guess (6)">6</button>
+  <button onclick = "guess (7)">7</button>
+  <button onclick = "guess (8)">8</button>
+  <button onclick = "guess (9)">9</button>
+  <button onclick = "guess (10)">10</button>
+  <button onclick = "replay()">REPLAY🔄</button>
+
+  <p id = "outcome"></p>
+
+  <script>
+    var answer = Math.floor (Math.random () * 10) + 1;
+    var lives = 3;
+    
+    function guess(value) {
+      if(lives == 0){
+        return;
+      }
+      else if(value == answer){
+        document.getElementById ("outcome").innerHTML = "💵well done💵";
+        lives = 0;
+      }
+      else {
+        lives -= 1;
+        document.getElementById ("outcome").innerHTML = "🪦WRONG!!!🪦 Lives: " + lives;
+      }
+    }
+    
+    function replay (){
+      answer = Math.floor (Math.random () * 10) + 1;
+      lives = 3;
+      document.getElementById ("outcome").innerHTML = "";
+    }
+  </script>
+</body>
+</html>
