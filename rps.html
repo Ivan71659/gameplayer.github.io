@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      text-align: center;
+    }	
+    .imperial-script-regular, .link {
+      font-family: "Imperial Script", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    header {
+      background-color: #cbc8cc;
+      padding: 20px;
+    }
+    .link {
+      text-decoration: none;
+      margin: 0 50px;
+      color: black;
+      padding: 20px;
+      font-size: 50px;
+    }
+    .link:hover {
+      background-color: #555;
+    }
+    button {
+      margin-top: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a class =  "link" href = "index.html">Home</a>
+    <a class =  "link" href = "ttt.html">Tic Tac Toe</a>
+    <a class =  "link" href = "rps.html">Rock Paper Scissors</a>
+    <a class =  "link" href = "ng.html">Guess the Number</a>
+  </header>
+  
+  <button onclick = "play(1)">🪨</button>
+  <button onclick = "play(2)">🧻</button>
+  <button onclick = "play(3)">✂️</button>
+  <button onclick = "replay()">REPLAY🔄</button>
+
+  <p id = "computer"></p>
+  <p id = "player"></p>
+  <p id = "outcome"></p>
+  
+  <script>
+    var computer = Math.floor (Math.random () * 3) + 1;
+    
+    function play (player) {
+      if (document.getElementById ("outcome").innerHTML != "") {
+        return;
+      }
+      
+      if(computer == 1){
+        document.getElementById ("computer").innerHTML = "Computer: 🪨";
+      }
+      else if (computer == 2){
+        document.getElementById ("computer").innerHTML = "Computer: 🧻";
+      }
+      else {
+        document.getElementById ("computer").innerHTML = "Computer: ✂️";
+      }
+      
+      if(player == 1){
+        document.getElementById ("player").innerHTML = "Player: 🪨";
+      }
+      else if(player == 2){
+        document.getElementById ("player").innerHTML = "Player: 🧻";
+      }
+      else{
+        document.getElementById ("player").innerHTML = "Player: ✂️";
+      }
+
+      if(player == computer){
+        document.getElementById ("outcome").innerHTML = "outcome: Tie🪢";
+      }
+      else if(player == 1 && computer == 3){
+        document.getElementById ("outcome").innerHTML = "outcome: Player wins!🏆";
+      }
+      else if(player == 2 && computer == 1){
+        document.getElementById ("outcome").innerHTML = "outcome: Player wins!🏆";
+      }
+      else if(player == 3 && computer == 2){
+        document.getElementById ("outcome").innerHTML = "outcome: Player wins!🏆";
+      }
+      else{
+        document.getElementById ("outcome").innerHTML = "outcome: Computer wins!🥇";
+      }
+    }
+    
+    function replay (){
+      computer = Math.floor (Math.random () * 3) + 1;
+      document.getElementById ("player").innerHTML = "";
+      document.getElementById ("outcome").innerHTML = "";
+      document.getElementById ("computer").innerHTML = "";
+    }
+  </script>
+</body>
+</html>
