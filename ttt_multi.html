@@ -1,0 +1,114 @@
+<body>
+
+  <header>
+    <a class =  "link" href = "index.html">Home</a>
+    <a class =  "link" href = "ttt.html">Tic Tac Toe</a>
+    <a class =  "link" href = "rps.html">Rock Paper Scissors</a>
+    <a class =  "link" href = "ng.html">Guess the Number</a>
+  </header>
+
+  <table>
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button1"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button2"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button3"></button> </td>
+    </tr>
+
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button4"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button5"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button6"></button> </td>
+    </tr>
+
+    <tr>
+      <td> <button onclick = "tap (this)" id = "button7"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button8"></button> </td>
+      <td> <button onclick = "tap (this)" id = "button9"></button> </td>
+    </tr>
+  </table>
+
+  <button class = "normal" onclick = "replay()">REPLAY🔄</button>
+  
+  <p id = "outcome"></p>
+
+  <script>
+    var turn = "❌";
+    var game_over = false;
+    
+    function tap (button){
+      if (game_over) {
+        return;
+      }
+      
+      if(button.textContent == ""){
+        button.textContent = turn;
+        checker ();
+        
+        if(turn == "❌"){
+          turn = "⭕"
+        }
+        else {
+          turn = "❌";
+        }
+      }
+    }
+    
+    function checker (){
+      var b1 = document.getElementById ("button1").textContent;
+      var b2 = document.getElementById ("button2").textContent;
+      var b3 = document.getElementById ("button3").textContent;
+      var b4 = document.getElementById ("button4").textContent;
+      var b5 = document.getElementById ("button5").textContent;
+      var b6 = document.getElementById ("button6").textContent;
+      var b7 = document.getElementById ("button7").textContent;
+      var b8 = document.getElementById ("button8").textContent;
+      var b9 = document.getElementById ("button9").textContent;
+    
+      if(turn == b1 && turn == b2 && turn == b3){
+        game_over = true;
+      }
+      else if(turn == b4 && turn == b5 && turn == b6){
+        game_over = true;
+      }
+      else if(turn == b7 && turn == b8 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b1 && turn == b4 && turn == b7){
+        game_over = true;
+      }
+      else if(turn == b2 && turn == b5 && turn == b8){
+        game_over = true;
+      }
+      else if(turn == b3 && turn == b6 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b1 && turn == b5 && turn == b9){
+        game_over = true;
+      }
+      else if(turn == b3 && turn == b5 && turn == b7){
+        game_over = true;
+      }
+
+      if(game_over == true){
+        document.getElementById ("outcome").innerHTML = turn + " won!";
+      }
+    }
+
+    function replay (){
+      turn = "❌";
+      game_over = false;
+      document.getElementById ("outcome").innerHTML = "";
+      document.getElementById ("button1").textContent = "";
+      document.getElementById ("button2").textContent = "";
+      document.getElementById ("button3").textContent = "";
+      document.getElementById ("button4").textContent = "";
+      document.getElementById ("button5").textContent = "";
+      document.getElementById ("button6").textContent = "";
+      document.getElementById ("button7").textContent = "";
+      document.getElementById ("button8").textContent = "";
+      document.getElementById ("button9").textContent = "";
+    }
+  </script>
+
+</body>
+</html>
